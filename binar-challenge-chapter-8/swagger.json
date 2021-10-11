@@ -1,0 +1,270 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is Binar FW-Chap-8-Challenge API",
+        "version": "1.0.0",
+        "title": "FW-Chap-8-Challenge",
+        "contact": {
+            "email": "FW-Chap-8@binar.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "FW-Chap-8.com",
+    "basePath": "/v2",
+    "tags": [{
+        "name": "binar",
+        "description": "Binar FW Chap 8 Challenge API",
+        "externalDocs": {
+            "description": "Find out more",
+            "url": "http://binar.FW-Chap-8.com"
+        }
+    }],
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "paths": {
+        "/players": {
+            "post": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Add new player",
+                "description": "",
+                "OperationId": "addPlayer",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Player"
+                    }
+                }],
+                "responses": {
+                    "201": {
+                        "description": "Player Created",
+                        "result": "SUCCESS"
+                    },
+                    "400": {
+                        "description": "Field Cannot be Empty.",
+                        "result": "FAILED"
+                    },
+                    "500": {
+                        "description": "Failed Creating PLayer.",
+                        "result": "FAILED"
+                    }
+                },
+                "security": [{
+                    "basePath": "/api"
+                }]
+            },
+            "get": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Find all Player",
+                "description": "",
+                "OperationId": "findAllPlayer",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Player"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success Retrieving all Players",
+                        "result": "SUCCESS"
+                    },
+                    "500": {
+                        "description": "Failed Retrieving Players.",
+                        "result": "FAILED"
+                    }
+                }
+            }
+        },
+        "players/:id": {
+            "get": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Finding Player by ID",
+                "description": "",
+                "operationId": "findPlayerById",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "query",
+                    "description": "Player ID",
+                    "required": true,
+                    "type": "integer"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Succeed Find Player ID",
+                        "result": "SUCCESS"
+                    },
+                    "500": {
+                        "description": "Failed Retrieve Player ID",
+                        "result": "FAILED"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Update Player",
+                "description": "",
+                "operationId": "updatePlayer",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "query",
+                    "description": "Player ID",
+                    "required": true,
+                    "type": "integer"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Succeed Updating Player",
+                        "result": "SUCCESS"
+                    },
+                    "400": {
+                        "description": "Player Not Found",
+                        "result": "FAILED"
+                    },
+                    "500": {
+                        "description": "Failed Updating Player",
+                        "result": "FAILED"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Delete Player by ID",
+                "description": "",
+                "operationId": "deletePlayerById",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "query",
+                    "description": "Player ID",
+                    "required": true,
+                    "type": "integer"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Player Deleted",
+                        "result": "SUCCESS"
+                    },
+                    "400": {
+                        "description": "Cannot Delete Player",
+                        "result": "FAILED"
+                    },
+                    "500": {
+                        "description": "Failed Deleting Player",
+                        "result": "FAILED"
+                    }
+                }
+            }
+        },
+        "players/exp/id": {
+            "post": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Updating Players Exp",
+                "description": "",
+                "operationId": "updatePlayerExp",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "query",
+                    "description": "EXP of the player",
+                    "required": true,
+                    "type": "integer"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success updating player EXP",
+                        "result": "SUCCESS"
+                    },
+                    "400": {
+                        "description": "Cannot Update Player EXP",
+                        "result": "FAILED"
+                    },
+                    "500": {
+                        "description": "Failed Updating Player EXP",
+                        "result": "FAILED"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Player": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "username" :{
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "experience": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lvl": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        }
+    }
+}
